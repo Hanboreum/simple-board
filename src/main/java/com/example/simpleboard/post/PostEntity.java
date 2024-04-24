@@ -6,8 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -29,6 +28,6 @@ public class PostEntity {
     private String status;
     private String title;
     private String content;
-    private Date pastedAt;
+    private LocalDateTime postedAt;
 
 }

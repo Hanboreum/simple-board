@@ -6,7 +6,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+
 
 @Setter
 @Getter
@@ -25,5 +26,5 @@ public class ReplyEntity {
     private String status;
     private String title;
     private String content;
-    private Date repliedAt;
+    private LocalDateTime repliedAt;
 }
