@@ -1,9 +1,6 @@
 package com.example.simpleboard.post;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -27,6 +24,7 @@ public class PostEntity {
     private String email;
     private String status;
     private String title;
+    @Column(columnDefinition = "TEXT")
     private String content;
     private LocalDateTime postedAt;
 
