@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/board")
-@JsonNaming(value = PropertyNamingStrategies.SnakeCaseStrategy.class)
+
 public class BoardApiController {
-    private String boardName;
+
 
 }
