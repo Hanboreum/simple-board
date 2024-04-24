@@ -1,31 +1,28 @@
-package com.example.simpleboard.post;
+package com.example.simpleboard.reply.db;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
+
 @Setter
-@ToString
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
-@Entity(name = "post")
-public class PostEntity {
+@ToString
+@Entity(name = "reply")
+public class ReplyEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long boardId;
     private String userName;
     private String password;
-    private String email;
     private String status;
     private String title;
     @Column(columnDefinition = "TEXT")
     private String content;
-    private LocalDateTime postedAt;
-
+    private LocalDateTime repliedAt;
 }

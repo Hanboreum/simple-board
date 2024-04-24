@@ -1,4 +1,4 @@
-package com.example.simpleboard.post;
+package com.example.simpleboard.post.db;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
