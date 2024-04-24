@@ -1,5 +1,6 @@
 package com.example.simpleboard.post;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -15,6 +16,7 @@ import java.util.Date;
 @Setter
 @ToString
 @Builder
+@Entity(name = "post")
 public class PostEntity {
 
     @Id

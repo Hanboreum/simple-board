@@ -1,5 +1,6 @@
 package com.example.simpleboard.reply;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -13,6 +14,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 @ToString
+@Entity(name = "reply")
 public class ReplyEntity {
 
     @Id
