@@ -4,6 +4,7 @@ import com.example.simpleboard.post.db.PostEntity;
 import com.example.simpleboard.reply.db.ReplyEntity;
 import com.example.simpleboard.reply.db.ReplyRepository;
 import com.example.simpleboard.reply.model.ReplyRequest;
+import com.example.simpleboard.reply.model.ReplyViewRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -35,5 +36,21 @@ public class ReplyService {
     }
     public List<ReplyEntity> all(){
         return replyRepository.findAll();
+    }
+    public void delete(ReplyViewRequest replyViewRequest){
+        replyRepository.findById(replyViewRequest.getPostId())
+                .map( it ->{
+                    if( !it.getPassword().equals(replyViewRequest.getPassword())){
+                        var format =" 비밀번호 오류 %s vs %s";
+                        throw new RuntimeException(String.format(format, it.getPassword(),replyViewRequest.getPassword()));
+                    }
+                    it.setStatus("UNREGISTERED");
+                    replyRepository.save(it);
+                    return it;
+                }).orElseThrow(
+                        () ->{
+                            return new RuntimeException("비밀번호가 일치하지 않는다. ");
+                        }
+                );
     }
 }
