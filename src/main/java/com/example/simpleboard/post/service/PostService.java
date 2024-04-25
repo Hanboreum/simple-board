@@ -4,6 +4,7 @@ import com.example.simpleboard.post.db.PostEntity;
 import com.example.simpleboard.post.db.PostRepository;
 import com.example.simpleboard.post.model.PostRequest;
 import com.example.simpleboard.post.model.PostViewRequest;
+import com.example.simpleboard.reply.service.ReplyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,10 +15,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PostService {
     private final PostRepository postRepository;
+    private final ReplyService replyService;
 
     public PostEntity create( PostRequest postRequest){
         var entity = PostEntity.builder()
-                .postId(1L) //임시 고정
+                .boardId(1L) //임시 고정
                 .userName(postRequest.getUserName())
                 .password(postRequest.getPassword())
                 .email(postRequest.getEmail())
@@ -35,12 +37,17 @@ public class PostService {
      */
 
     public PostEntity view(PostViewRequest postViewRequest) {
-       return postRepository.findFirstByIdAndStatusOrderByIdDesc(postViewRequest.getPostId(),"REGISTERED") //repo에서 findbyid라는 옵셔널
+       return postRepository.findFirstByIdAndStatusOrderByIdDesc(postViewRequest.getPostId(), "REGISTERED") //repo에서 findbyid라는 옵셔널
                .map( it ->{ //map을 받게 된다.
                    if(!it.getPassword().equals(postViewRequest.getPassword())){ //해당 데이터가 있을 때만 비교한다
                        var format = "패스워드 오류 %s vs %s"; //패스워드 오류
                        throw new RuntimeException(String.format(format,it.getPassword(),postViewRequest.getPassword()));
                    }
+                   //게시글을 찾아갈 때 답변 글도 같이 내려줌
+                   //글이 이미 있다면
+                   var replyList = replyService.findAllByPostId(it.getId());
+                   it.setReplyList(replyList);
+
                    return it;//패스워드 같음
                }).orElseThrow( //데이터가 없다면
                        () ->{

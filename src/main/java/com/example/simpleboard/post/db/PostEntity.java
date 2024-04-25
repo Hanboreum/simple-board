@@ -1,9 +1,12 @@
 package com.example.simpleboard.post.db;
 
+import com.example.simpleboard.reply.db.ReplyEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -18,7 +21,7 @@ public class PostEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long postId;
+    private Long boardId;
     private String userName;
     private String password;
     private String email;
@@ -27,5 +30,6 @@ public class PostEntity {
     @Column(columnDefinition = "TEXT")
     private String content;
     private LocalDateTime postedAt;
-
+    @Transient// db column으로 사용하지 않겠다
+    private List<ReplyEntity> replyList = List.of(); //빈 arraylist를 defaultfh
 }
