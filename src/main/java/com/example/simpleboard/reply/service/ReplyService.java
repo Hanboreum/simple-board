@@ -33,4 +33,7 @@ public class ReplyService {
     public List<ReplyEntity> findAllByPostId(Long postId){
         return replyRepository.findAllByPostIdAndStatusOrderByIdDesc(postId,"REGISTERED");
     }
+    public List<ReplyEntity> all(){
+        return replyRepository.findAll();
+    }
 }
