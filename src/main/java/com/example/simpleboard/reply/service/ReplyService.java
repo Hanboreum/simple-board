@@ -30,5 +30,7 @@ public class ReplyService {
        return replyRepository.save(entity);
     }
 
-
+    public List<ReplyEntity> findAllByPostId(Long postId){
+        return replyRepository.findAllByPostIdAndStatusOrderByIdDesc(postId,"REGISTERED");
+    }
 }
