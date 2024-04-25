@@ -17,7 +17,7 @@ public class PostService {
 
     public PostEntity create( PostRequest postRequest){
         var entity = PostEntity.builder()
-                .boardId(1L) //임시 고정
+                .postId(1L) //임시 고정
                 .userName(postRequest.getUserName())
                 .password(postRequest.getPassword())
                 .email(postRequest.getEmail())
