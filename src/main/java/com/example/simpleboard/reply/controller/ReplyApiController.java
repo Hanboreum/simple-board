@@ -16,6 +16,6 @@ public class ReplyApiController {
 
     @PostMapping("")
     public ReplyEntity create(@Valid @RequestBody ReplyRequest replyRequest){
-        return  replyService.crate(replyRequest);
+        return  replyService.create(replyRequest);
     }
 }

@@ -17,7 +17,7 @@ import java.util.List;
 public class ReplyService {
     private final ReplyRepository replyRepository;
 
-    public ReplyEntity crate( ReplyRequest replyRequest){
+    public ReplyEntity create( ReplyRequest replyRequest){
        var entity =  ReplyEntity.builder()
                 .postId(replyRequest.getPostId())
                 .userName(replyRequest.getUserName())
