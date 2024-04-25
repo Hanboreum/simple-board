@@ -16,9 +16,9 @@ import lombok.*;
 @JsonNaming(value = PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class ReplyRequest {
     @NotNull
-    private Long postId; //게시글에 대한 답변
+    private Long postId; //게시글에 대한 답변이기 때문에 postId가 필요
     @NotBlank
-    private String userName; //직원 or 사용자 이름
+    private String userName; //직원 이름
     @NotBlank
     @Size(min = 4, max = 4)
     private String password; //직원이 작성하는 것이기 때문에 필요 없을 수도
