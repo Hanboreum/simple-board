@@ -24,8 +24,8 @@ public class PostApiController {
 
     @PostMapping("/view") //아니 view인데 왜 post
     public PostEntity view(@Valid @RequestBody PostViewRequest postViewRequest){ //게시글 보기
-
-        return postService.view(postViewRequest);
+        var entity = postService.view(postViewRequest);
+        return entity;
     }
 
     @GetMapping("/all")

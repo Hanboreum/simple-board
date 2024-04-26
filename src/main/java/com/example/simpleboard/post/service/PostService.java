@@ -40,6 +40,7 @@ public class PostService {
      */
 
     public PostEntity view(PostViewRequest postViewRequest) {
+
        return postRepository.findFirstByIdAndStatusOrderByIdDesc(postViewRequest.getPostId(), "REGISTERED") //repo에서 findbyid라는 옵셔널
                .map( it ->{ //map을 받게 된다.
                    if(!it.getPassword().equals(postViewRequest.getPassword())){ //해당 데이터가 있을 때만 비교한다
@@ -53,9 +54,9 @@ public class PostService {
                    //it.setReplyList(replyList);
 
                    return it;//패스워드 같음
-               }).orElseThrow( //데이터가 없다면
-                       () ->{
-                           return new RuntimeException("해당 게시글이 존재하지 않습니다. :" +postViewRequest.getPostId() );
+               }).orElseThrow(
+                       ()-> {
+                           return new RuntimeException("해당 게시글이 존재 하지 않습니다 : "+postViewRequest.getPostId());
                        }
                );
     }
