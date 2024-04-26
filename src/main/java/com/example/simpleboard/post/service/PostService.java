@@ -17,7 +17,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PostService {
     private final PostRepository postRepository;
-    private final ReplyService replyService;
     private final BoardRepository boardRepository;
 
     public PostEntity create( PostRequest postRequest){
@@ -49,8 +48,9 @@ public class PostService {
                    }
                    //게시글을 찾아갈 때 답변 글도 같이 내려줌
                    //글이 이미 있다면
-                   var replyList = replyService.findAllByPostId(it.getId());
-                   it.setReplyList(replyList);
+                   //postentity의 @onetomany의 mapped를 통해 자동으로 replylist를 가져온다
+                   //var replyList = replyService.findAllByPostId(it.getId());
+                   //it.setReplyList(replyList);
 
                    return it;//패스워드 같음
                }).orElseThrow( //데이터가 없다면
