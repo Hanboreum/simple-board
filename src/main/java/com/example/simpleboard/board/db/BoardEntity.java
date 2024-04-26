@@ -1,10 +1,10 @@
 package com.example.simpleboard.board.db;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.example.simpleboard.post.db.PostEntity;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -22,4 +22,8 @@ public class BoardEntity {
     private String boardName;
     private String status;
 
+    //1: N 관계
+    //entity안에 변수가 있으면 컬럼으로 보기 떄문에
+    @OneToMany (mappedBy = "board") //board 가 postentity 안에 있어야 함
+    private List<PostEntity> postList = List.of();
 }
