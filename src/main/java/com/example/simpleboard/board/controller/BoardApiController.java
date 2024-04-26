@@ -1,6 +1,7 @@
 package com.example.simpleboard.board.controller;
 
 import com.example.simpleboard.board.db.BoardEntity;
+import com.example.simpleboard.board.model.BoardDTO;
 import com.example.simpleboard.board.model.BoardRequest;
 import com.example.simpleboard.board.service.BoardService;
 import jakarta.validation.Valid;
@@ -15,11 +16,11 @@ public class BoardApiController {
 
     private final BoardService boardService;
     @PostMapping("")
-    public BoardEntity create(@Valid @RequestBody BoardRequest boardRequest){
+    public BoardDTO create(@Valid @RequestBody BoardRequest boardRequest){
         return boardService.create(boardRequest);
     }
     @GetMapping("id/{id}")
-    public BoardEntity view(@PathVariable Long id){
+    public BoardDTO view(@PathVariable Long id){
         var entity = boardService.view(id);
         log.info("result : {}", entity);
         return boardService.view(id);
