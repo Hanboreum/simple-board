@@ -23,3 +23,4 @@ public class BoardDTO {
     private List<PostDto> postList = List.of();
 
 }
+//dto 존재 이유 : 무한 루프 제거
