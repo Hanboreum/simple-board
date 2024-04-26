@@ -36,6 +36,7 @@ public class PostEntity {
     @Column(columnDefinition = "TEXT")
     private String content;
     private LocalDateTime postedAt;
-    @Transient// db column으로 사용하지 않겠다
+    //@Transient// db column으로 사용하지 않겠다
+    @OneToMany(mappedBy = "post") //post = 1. post에 매핑
     private List<ReplyEntity> replyList = List.of(); //빈 arraylist를 defaultfh
 }
