@@ -26,4 +26,4 @@ public class PostConverter {
     }
 }
 //entity를 뷰까지 내리는 일은 없어야 한다. 그렇기 위해서 entity와 상응하는 dto를 만들어야 함
-//converter 를 통해 데이터 변환. 
+//converter 를 통해 데이터 변환.
