@@ -15,6 +15,8 @@ import lombok.*;
 @ToString
 @JsonNaming(value = PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class PostRequest { //화면에서 들어오는 걸 받음
+
+    private Long boardId = 1L;
     @NotBlank
     private String userName;
 
