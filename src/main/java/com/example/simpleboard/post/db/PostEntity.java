@@ -31,7 +31,7 @@ public class PostEntity {
     private String userName;
     private String password;
     private String email;
-    private String status;
+    private String status; //BoardEntity@Where(clause = "status =Registerd")
     private String title;
     @Column(columnDefinition = "TEXT")
     private String content;
